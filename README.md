@@ -12,7 +12,12 @@ Every node is full-fledged and can be written in seperate files.
 Node consists of 3 fields: 
  - full size in bytes
  - size of children in bytes
- - children (as a continous list of nodes)
+ - children (as a continuous list of nodes)
+
+Installation
+=====
+ - Just copy and use pml\_node.h pml\_node.cpp in your project
+ - or you can build project with CMake and link yours against polyml.lib from build directory
 
 Use
 ======
