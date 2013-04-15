@@ -30,6 +30,14 @@ namespace pml
 
 	pml_node::~pml_node()
 	{
+		for (size_t i = 0; i < children_count(); i++) 
+		{
+			if (m_children[i] != NULL) 
+			{
+				delete m_children[i];
+				m_children[i] = NULL;
+			}
+		}
 	}
 
 	void pml_node::set_data(const std::string &data)
