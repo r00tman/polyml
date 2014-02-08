@@ -10,7 +10,7 @@ void pml_test()
 {
 	pml_node tree;
 	tree.set_data("hi");
-	assert(tree.data() == "hi");
+	assert(tree.str_data() == "hi");
 
 	tree.add_child(new pml_node("hi"));
 	assert(tree.children_count() == 1);

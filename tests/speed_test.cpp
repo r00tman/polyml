@@ -4,6 +4,8 @@
 #include <string>
 #include <algorithm>
 #include <cassert>
+#include <cstdlib>
+#include <cstdio>
 #include <sys/timeb.h>
 #include "../pml_node.h"
 
@@ -15,7 +17,7 @@ void speed_pml_test()
 	for (int i = 0; i < 1000000; i++)
 	{
 		char buffer[100];
-		_itoa_s(i, buffer, 100, 10);
+                sprintf(buffer, "%d", i);
 		pml_node *c = new pml_node(std::string(buffer));
 		tree.add_child(c);
 	}

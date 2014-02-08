@@ -23,8 +23,13 @@ namespace pml
 		return sz;
 	}
 
-	pml_node::pml_node(std::string data) : 
+	pml_node::pml_node(const std::vector<char> &data) : 
 		m_data(data)
+	{
+	}
+
+	pml_node::pml_node(const std::string &data) : 
+		m_data(data.begin(), data.end())
 	{
 	}
 
@@ -40,15 +45,25 @@ namespace pml
 		}
 	}
 
-	void pml_node::set_data(const std::string &data)
+	void pml_node::set_data(const std::vector<char> &data)
 	{
 		m_data = data;
 	}
+	
+        void pml_node::set_data(const std::string &data)
+	{
+		m_data = std::vector<char>(data.begin(), data.end());
+	}
 
-	std::string pml_node::data() const
+	std::vector<char> pml_node::data() const
 	{
 		return m_data;
 	}
+
+	std::string pml_node::str_data() const
+	{
+		return std::string(m_data.begin(), m_data.end());
+        }
 
 	void pml_node::add_child(pml_node *child)
 	{
@@ -70,7 +85,7 @@ namespace pml
 		write_size_t(stream, size());
 		write_size_t(stream, children_size());
 
-		stream.write(m_data.c_str(), m_data.size());
+		stream.write(&(*m_data.begin()), m_data.size());
 
 		for (size_t i = 0; i < m_children.size(); i++)
 			m_children[i]->write(stream);
