@@ -6,7 +6,7 @@ project (polyml)
 add_library(polyml STATIC pml_node.cpp)
 
 install (TARGETS polyml DESTINATION lib)
-install (FILES pml_node.h DESTINATION include)
+install (FILES pml_node.h DESTINATION include/polyml)
 
 enable_testing()
 add_subdirectory(tests)
